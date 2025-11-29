@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título y enlace al archivo CSS -->
+  <title>Tienda Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ====================================================== -->
+<!-- HEADER: Logo, filtros de categoría, buscador y carrito -->
+<!-- ====================================================== -->
+  <header class="header">
+    <h1 class="brand">Tienda Demo</h1>
+
+<!-- Menú desplegable de categorías con dropdown -->
+
+<div class="dropdown" id="dropdown">
+    <button class="dropdown-toggle" id="dropdownBtn" type="button">
+      Categorías ▾
+    </button>
+  
+    <nav class="dropdown-menu" id="dropdownMenu" aria-label="Filtrar por categoría">
+        <button data-filter="all">Todo</button>
+        <button data-filter="electronica">Tecnologia</button>
+        <button data-filter="ropa">Ropa</button>
+        <button data-filter="libros">Libros</button>
+    </nav>
+  </div>
+  
+
+    <!-- Buscador y botón para abrir el carrito -->
+    <div class="header-actions">
+      <input 
+        id="search" 
+        type="search" 
+        placeholder="Buscar productos…" 
+        aria-label="Buscar productos" 
+      />
+
+      <button 
+        id="cartToggle" 
+        aria-controls="cartPanel" 
+        aria-expanded="false"
+        type="button"
+      >
+        Carrito (<span id="cartCount">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================== -->
+  <!-- SECCIÓN PRINCIPAL: Lista de productos                  -->
+  <!-- ====================================================== -->
+  <main>
+    <section id="products" class="products-grid" aria-live="polite">
+
+      <!-- Producto 1 -->
+      <article 
+        class="product" 
+        data-id="p1" 
+        data-name="Auriculares Inalámbricos" 
+        data-price="799" 
+        data-category="electronica"
+      >
+        <img src="imagenes/auriculares.jpg" alt="Auriculares inalámbricos" />
+        <h3>Auriculares Inalambricos</h3>
+        <p class="price">$799 MXN</p>
+        <button class="add-to-cart" type="button">Agregar</button>
+      </article>
+
+      <!-- Producto 2 -->
+      <article 
+        class="product" 
+        data-id="p2" 
+        data-name="Camiseta Básica" 
+        data-price="249" 
+        data-category="ropa"
+      >
+        <img src="imagenes/camiseta.jpg" alt="Camiseta básica de algodón" />
+        <h3>Camiseta Básica</h3>
+        <p class="price">$249 MXN</p>
+        <button class="add-to-cart" type="button">Agregar</button>
+      </article>
+
+      <!-- Producto 3 -->
+      <article 
+        class="product" 
+        data-id="p3" 
+        data-name="JavaScript Fácil" 
+        data-price="399" 
+        data-category="libros"
+      >
+        <img src="imagenes/libro-js.jpg" alt="Libro JavaScript Fácil" />
+        <h3>JavaScript Fácil</h3>
+        <p class="price">$399 MXN</p>
+        <button class="add-to-cart" type="button">Agregar</button>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ====================================================== -->
+  <!-- CARRITO LATERAL: Panel con productos añadidos          -->
+  <!-- ====================================================== -->
+  <aside 
+    id="cartPanel" 
+    class="cart-panel" 
+    aria-hidden="true" 
+    aria-labelledby="cartToggle"
+  >
+    <header class="cart-header">
+      <h2>Tu carrito</h2>
+      <button id="closeCart" aria-controls="cartPanel" type="button">✕</button>
+    </header>
+
+    <!-- Contenedor donde se agregan los productos del carrito -->
+    <div id="cartItems" class="cart-items"></div>
+
+    <footer class="cart-footer">
+      <p>Subtotal: <strong id="cartSubtotal">$0</strong></p>
+      <button id="checkoutBtn" type="button">Pagar</button>
+      <button id="clearCart" type="button">Vaciar</button>
+    </footer>
+  </aside>
+
+  <!-- ====================================================== -->
+  <!-- FOOTER: Pie de página con el año dinámico              -->
+  <!-- ====================================================== -->
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Tienda Demo</p>
+  </footer>
+
+  <!-- Año actualizado automáticamente con JavaScript -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Lógica del carrito y filtros -->
+  <script src="app.js"></script>
+
+</body>
+</html>
